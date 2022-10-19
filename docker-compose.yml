@@ -1,0 +1,13 @@
+version: "3"
+services:
+  php:
+    build:
+      context: ./.docker/php/image
+    container_name: php
+    volumes:
+      - ./.docker/php/image/php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ./www:/var/www/html
+    ports:
+      - "80:80"
+    environment:
+      PHP_IDE_CONFIG: "serverName=Docker"
