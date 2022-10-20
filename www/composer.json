@@ -5,5 +5,7 @@
             "Root\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "ext-simplexml": "*"
+    }
 }
