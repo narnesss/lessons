@@ -11,7 +11,7 @@ class Person
     private ?int $myage;
     private int $id;
 
-    public function __construct(protected string $name, private int $age)
+    public function __construct(protected string $name, private int $age, public Account $account)
     {
         $this->myname = $name;
         $this->myage = $age;
@@ -44,6 +44,19 @@ class Person
         if (method_exists($this, $method)) {
             $this->$method($value);
         }
+    }
+
+    public function __toString(): string
+    {
+        $desc = $this->getName() . " (age ";
+        $desc .= $this->getAge() . ")";
+        return $desc;
+    }
+
+    public function __clone(): void
+    {
+        $this->id = 0;
+        $this->account = clone $this->account;
     }
 
     public function __unset(string $property): void
@@ -95,4 +108,8 @@ class Person
         $this->writer->writeName($this);
     }
 
+    public static function printThing(string|\Stringable $str): void
+    {
+        print $str;
+    }
 }
