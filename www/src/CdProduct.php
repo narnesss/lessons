@@ -4,29 +4,8 @@
 namespace Root;
 
 
-class CdProduct
+class CdProduct extends ShopProduct
 {
-    public $playLength;
-    public $title;
-    public $producerMainName;
-    public $producerFirstName;
-    public $price;
-
-    public function __construct(
-        string $title,
-        string $firstName,
-        string $mainName,
-        float $price,
-        int $playLength
-    )
-    {
-        $this->title = $title;
-        $this->producerFirstName = $firstName;
-        $this->producerMainName = $mainName;
-        $this->price = $price;
-        $this->playLength = $playLength;
-    }
-
     public function getPlayLength(): int
     {
         return $this->playLength;
@@ -38,10 +17,5 @@ class CdProduct
         $base .= "{$this->producerFirstName} )";
         $base .= ": playing time - {$this->playLength}";
         return $base;
-    }
-
-    public function getProducer(): string
-    {
-        return $this->producerFirstName . " " . $this->producerMainName;
     }
 }

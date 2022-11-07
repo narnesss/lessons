@@ -4,29 +4,8 @@
 namespace Root;
 
 
-class BookProduct
+class BookProduct extends ShopProduct
 {
-    public $numPages;
-    public $title;
-    public $producerMainName;
-    public $producerFirstName;
-    public $price;
-
-    public function __construct(
-        string $title,
-        string $firstName,
-        string $mainName,
-        float $price,
-        int $numPages
-    )
-    {
-        $this->title = $title;
-        $this->producerFirstName = $firstName;
-        $this->producerMainName = $mainName;
-        $this->price = $price;
-        $this->numPages = $numPages;
-    }
-
     public function getNumberOfPages(): int
     {
         return $this->numPages;
@@ -38,11 +17,5 @@ class BookProduct
         $base .= "{$this->producerFirstName} )";
         $base .= ": page count - {$this->numPages}";
         return $base;
-    }
-
-    public function getProducer(): string
-    {
-        return $this->producerFirstName . " "
-            . $this->producerMainName;
     }
 }
