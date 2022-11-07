@@ -6,14 +6,12 @@ namespace Root;
 
 class CdProduct extends ShopProduct
 {
-    public $playLength;
-
     public function __construct(
         string $title,
         string $firstName,
         string $mainName,
-        float $price,
-        int $playLength
+        int|float $price,
+        private int $playLength
     )
     {
         parent:: __construct(
@@ -22,7 +20,6 @@ class CdProduct extends ShopProduct
             $mainName,
             $price
         );
-        $this->playLength = $playLength;
     }
 
     public function getPlayLength(): int

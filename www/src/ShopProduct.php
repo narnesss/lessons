@@ -6,25 +6,46 @@ namespace Root;
 
 class ShopProduct
 {
-    public $discount = 0;
-    public $title;
-    public $producerMainName;
-    public $producerFirstName;
-    public $price;
+    private int|float $discount = 0;
 
     public function __construct(
-        $title,
-        $firstName,
-        $mainName,
-        $price,
-        $num
+        private string $title,
+        private string $producerFirstName,
+        private string $producerMainName,
+        protected int|float $price
     )
     {
-        $this->title = $title;
-        $this->producerFirstName = $firstName;
-        $this->producerMainName = $mainName;
-        $this->price = $price;
+
+    }
+
+    public function getProducerFirstName(): string
+    {
+        return $this->producerFirstName;
+    }
+
+    public function getProducerMainName(): string
+    {
+        return $this->producerMainName;
+    }
+
+    public function setDiscount(int|float $num): void
+    {
         $this->discount = $num;
+    }
+
+    public function getDiscount(): int
+    {
+        return $this->discount;
+    }
+
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    public function getPrice(): int|float
+    {
+        return ($this->price - $this->discount);
     }
 
     public function getProducer(): string
@@ -38,12 +59,5 @@ class ShopProduct
         $base .= "{$this->producerFirstName} )";
         return $base;
     }
-    public function setDiscount(int $num): void
-    {
-        $this->discount = $num;
-    }
-    public function getPrice(): int|float
-    {
-        return ($this->price - $this->discount);
-    }
+
 }
