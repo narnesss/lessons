@@ -1,5 +1,6 @@
 <?php
-
+namespace Root;
+require_once 'vendor/autoload.php';
 
 $pop = 2;
 switch ($pop) {
