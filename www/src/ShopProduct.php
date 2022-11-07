@@ -6,6 +6,7 @@ namespace Root;
 
 class ShopProduct
 {
+    public $discount = 0;
     public $title;
     public $producerMainName;
     public $producerFirstName;
@@ -15,13 +16,15 @@ class ShopProduct
         $title,
         $firstName,
         $mainName,
-        $price
+        $price,
+        $num
     )
     {
         $this->title = $title;
         $this->producerFirstName = $firstName;
         $this->producerMainName = $mainName;
         $this->price = $price;
+        $this->discount = $num;
     }
 
     public function getProducer(): string
@@ -34,5 +37,13 @@ class ShopProduct
         $base = "{$this->title} ( {$this->producerMainName}, ";
         $base .= "{$this->producerFirstName} )";
         return $base;
+    }
+    public function setDiscount(int $num): void
+    {
+        $this->discount = $num;
+    }
+    public function getPrice(): int|float
+    {
+        return ($this->price - $this->discount);
     }
 }

@@ -20,7 +20,8 @@ class BookProduct extends ShopProduct
             $title,
             $firstName,
             $mainName,
-            $price
+            $price,
+            $numPages
         );
         $this->numPages = $numPages;
     }
@@ -28,6 +29,11 @@ class BookProduct extends ShopProduct
     public function getNumberOfPages(): int
     {
         return $this->numPages;
+    }
+
+    public function getPrice(): int|float
+    {
+        return $this->price;
     }
 
     public function getSummaryLine(): string
