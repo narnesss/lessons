@@ -6,17 +6,19 @@ namespace Root;
 
 class ShopProductWriter
 {
-    public function write($shopProduct): void
+    private $products = [];
+    public function addProduct(ShopProduct $shopProduct): void
     {
-        if (
-            ! ($shopProduct instanceof CdProduct) &&
-            ! ($shopProduct instanceof BookProduct)
-        ) {
-            die("wrong type supplied");
+        $this->products[] = $shopProduct;
+    }
+    public function write(): void
+    {
+        $str = "";
+        foreach ($this->products as $shopProduct) {
+            $str .= "{$shopProduct->title}: ";
+            $str .= $shopProduct->getProducer();
+            $str .= " ({$shopProduct->getPrice()})\n";
         }
-        $str = "{$shopProduct->title}: "
-            . $shopProduct->getProducer()
-            . " ({$shopProduct->price})\n";
         print $str;
     }
 }
