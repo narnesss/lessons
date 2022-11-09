@@ -7,10 +7,12 @@ namespace Root;
 class ShopProductWriter
 {
     private $products = [];
+
     public function addProduct(ShopProduct $shopProduct): void
     {
         $this->products[] = $shopProduct;
     }
+
     public function write(): void
     {
         $str = "";
