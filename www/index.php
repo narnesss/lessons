@@ -1,14 +1,12 @@
 <?php
 
-use Root\Preferences;
-
+use Root\CommsManager;
 
 if (file_exists($_SERVER["DOCUMENT_ROOT"] . "/vendor/autoload.php")) {
     require_once($_SERVER["DOCUMENT_ROOT"] . "/vendor/autoload.php");
 }
 
-$pref = Preferences::getInstance();
-$pref->setProperty("name", "Рома");
-unset($pref); // remove the reference
-$pref2 = Preferences::getInstance();
-print $pref2->getProperty("name") . "\n";
+$man = new CommsManager(CommsManager::MEGA);
+print (get_class($man->getApptEncoder())) . "\n";
+$man = new CommsManager(CommsManager::BLOGGS);
+print (get_class($man->getApptEncoder())) . "\n";
