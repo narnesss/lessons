@@ -2,10 +2,12 @@
     "name": "root/html",
     "autoload": {
         "psr-4": {
-            "Root\\": "src/"
+            "Root\\": "src/",
+            "popp\\": ["myproductioncode/","mytestcode/"]
         }
     },
     "require": {
+        "phpunit/phpunit": "^9",
         "ext-simplexml": "*",
       "ext-libxml": "*"
     }
